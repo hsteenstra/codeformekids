@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson — CodeForMe Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kids.css" />
+</head>
+<body data-page="learn">
+<header id="site-header"></header>
+
+<div class="workbench">
+  <div class="col">
+    <div class="panel">
+      <div class="panel-header"><span>Stage</span>
+        <div class="actions"><label class="speed" id="speed-wrap">Speed <input type="range" id="speed" min="0.5" max="3" step="0.5" value="1"></label><span class="status" id="status">Loading Python…</span></div></div>
+      <div class="stage-wrap"><canvas id="stage-canvas" width="560" height="420"></canvas></div>
+    </div>
+    <div class="panel" id="story-panel"><div class="panel-body">
+      <div class="lesson-title"><span class="unit-badge" id="l-badge"></span><div><div class="mono" id="l-num" style="background:none;padding:0"></div><h2 id="l-title" style="margin:0"></h2></div></div>
+      <div class="story" id="l-story" style="margin-top:12px"></div>
+      <div class="goal">🎯 <span id="l-goal"></span></div>
+      <ul class="checklist" id="l-checks"></ul>
+      <div class="vocab" id="l-vocab"></div>
+      <div class="hint-box" id="l-hint"></div>
+    </div></div>
+  </div>
+
+  <div class="col">
+    <div class="panel">
+      <div class="panel-header"><span id="ws-title">Your code</span>
+        <div class="actions"><button class="btn btn-ghost btn-sm" id="hint-btn">💡 Hint</button><button class="btn btn-ghost btn-sm" id="reset-btn">↺ Start over</button><button class="btn btn-ghost btn-sm" id="stop-btn" style="display:none">■ Stop</button><button class="btn btn-run" id="run-btn" disabled>▶ Run</button></div></div>
+      <div id="plan-wrap" style="display:none"><div class="pseudo-label">✏️ Your plan (pseudocode)</div><textarea class="pseudo-box" id="plan" placeholder="Write your plan in plain words, one step per line…" spellcheck="false"></textarea></div>
+      <div id="pseudo-show" class="pseudo-show" style="display:none"></div>
+      <div id="workspace"></div>
+    </div>
+    <div class="panel"><div class="panel-header"><span>Robot says / output</span></div><div class="console" id="console"><span class="muted">Run your program to see messages here.</span></div></div>
+    <div class="actions" style="justify-content:space-between"><a class="btn btn-ghost btn-sm" id="prev-btn" href="learn.html">← All lessons</a><a class="btn btn-ghost btn-sm" id="next-btn" href="learn.html" style="display:none">Next →</a></div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+<script src="js/common.js"></script>
+<script src="js/pyrunner.js"></script>
+<script src="js/robotworld.js"></script>
+<script src="js/blocks.js"></script>
+<script src="js/lessons-robot.js"></script>
+<script src="js/lessons-game.js"></script>
+<script src="js/lesson.js"></script>
+</body>
+</html>

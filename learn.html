@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Learn — CodeForMe Kids</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kids.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%237497af%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22monospace%22 fill=%22white%22 text-anchor=%22middle%22>&lt;/&gt;</text></svg>" />
+</head>
+<body data-page="learn">
+<header id="site-header"></header>
+<main class="container" style="padding-top:36px;padding-bottom:40px">
+  <h1 style="font-size:2.4rem">Your coding journey 🗺️</h1>
+  <p style="color:var(--text-muted);font-size:1.1rem;max-width:40em">Start with blocks, translate them into real Python, plan with pseudocode, then build your own games. Do the lessons in order — each one unlocks a new superpower.</p>
+  <div style="display:flex;align-items:center;gap:14px;margin:18px 0 34px"><div class="progress-bar" style="flex:1"><i id="pbar" style="width:0"></i></div><b id="ptext"></b></div>
+  <div id="units"></div>
+</main>
+<div id="site-footer"></div>
+<script src="js/common.js"></script>
+<script src="js/blocks.js"></script>
+<script src="js/lessons-robot.js"></script>
+<script src="js/lessons-game.js"></script>
+<script>
+  const prog = CFM.getProgress(); let done = 0, html = "";
+  CFM.UNITS.forEach((u) => {
+    const ls = CFM.LESSONS.filter((l) => l.unit === u.id);
+    html += `<section class="unit"><div class="unit-head"><span class="unit-badge" style="background:${u.color}">${u.id}</span><div><h2>${u.title}</h2><p>${u.sub}</p></div></div><div class="lessons">` +
+      ls.map((l) => { const d = prog[l.id]; if (d) done++; return `<a class="lesson-card ${d ? "done" : ""}" href="lesson.html?id=${l.id}"><span class="n">${l.id}</span><h3>${l.title}</h3><p>${l.blurb}</p><span class="tag" style="background:${u.color}22;color:#24313d">${u.tag}</span></a>`; }).join("") + "</div></section>";
+  });
+  document.getElementById("units").innerHTML = html + `<section class="unit"><div class="unit-head"><span class="unit-badge" style="background:#24313d">★</span><div><h2>Free Playground</h2><p>Everything unlocked. Build robot mazes and games with no rules.</p></div></div><div class="lessons"><a class="lesson-card" href="playground.html"><span class="n">∞</span><h3>Open the Playground</h3><p>Blocks or Python, robots or games — your call.</p><span class="tag">Free play</span></a></div></section>`;
+  document.getElementById("pbar").style.width = (done / CFM.LESSONS.length * 100) + "%";
+  document.getElementById("ptext").textContent = done + " / " + CFM.LESSONS.length + " lessons";
+</script>
+</body>
+</html>

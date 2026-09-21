@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>CodeForMe Kids — Learn real code by building robots & games</title>
+<meta name="description" content="Start with blocks, graduate to real Python. Build robots, learn pseudocode, and make your own games. Free from CodeForMe." />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kids.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%237497af%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22monospace%22 fill=%22white%22 text-anchor=%22middle%22>&lt;/&gt;</text></svg>" />
+</head>
+<body data-page="home">
+<header id="site-header"></header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">CodeForMe Kids · Free</span>
+      <h1>Build robots.<br>Learn <span class="mark">real code.</span></h1>
+      <p class="lead">Start by snapping blocks together, then <b>translate them into real Python</b>. Plan with pseudocode, steer your own robot, and finish by making your very own games.</p>
+      <div class="hero-cta"><a class="btn btn-sun" href="lesson.html?id=1-1">▶ Start Lesson 1</a><a class="btn btn-ghost" href="playground.html">Free Playground</a><button class="btn btn-ghost" id="hero-robot">🤖 Build my robot</button></div>
+    </div>
+    <div class="hero-stage"><canvas id="hero-canvas" width="360" height="360"></canvas><div class="mono" style="background:none">print("Hi, I'm " + <span id="hero-name"></span> + "!")</div></div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true"><path d="M0,32 C240,64 480,0 720,16 C960,32 1200,64 1440,32 L1440,60 L0,60 Z"></path></svg>
+</section>
+
+<section class="block">
+  <div class="container">
+    <h2 class="section-title">From blocks to real code in 5 steps</h2>
+    <p class="section-sub">Blocks are a great start — but real programmers type. We help you make the jump, one small step at a time.</p>
+    <div class="journey">
+      <div class="step"><div class="num" style="background:#5b8def">1</div><h3>Snap blocks</h3><p>Drag and drop to steer your robot.</p><pre>move forward
+turn right
+collect gem</pre></div>
+      <div class="step"><div class="num" style="background:#f0a020">2</div><h3>See the text</h3><p>Every block is secretly Python.</p><pre>move()
+turn_right()
+collect()</pre></div>
+      <div class="step"><div class="num" style="background:#9b8bd6">3</div><h3>Plan it</h3><p>Pseudocode: think first, code second.</p><pre>REPEAT 3 TIMES
+  walk forward
+  grab the gem</pre></div>
+      <div class="step"><div class="num" style="background:#3fb58a">4</div><h3>Write Python</h3><p>Loops, if, functions & variables.</p><pre>for i in range(3):
+    move()
+    collect()</pre></div>
+      <div class="step"><div class="num" style="background:#e8735a">5</div><h3>Make games</h3><p>Draw, move, score, win!</p><pre>if key_down("ArrowLeft"):
+    x -= 5
+    score += 1</pre></div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="container">
+    <h2 class="section-title">Why kids love it</h2>
+    <p class="section-sub">No installs. No accounts. It all runs right in your browser.</p>
+    <div class="cards">
+      <div class="card"><div class="ico">🐍</div><h3>Real Python</h3><p>Not a toy language. What you learn here is the same Python used by scientists, game makers and robot builders.</p></div>
+      <div class="card"><div class="ico">🤖</div><h3>Your own robot</h3><p>Choose its colors, eyes and name. It follows your code through mazes and even stars in your games.</p></div>
+      <div class="card"><div class="ico">🛝</div><h3>A free playground</h3><p>Finished the lessons? Design your own mazes, remix game templates and code whatever you dream up.</p></div>
+    </div>
+    <div style="text-align:center;margin-top:36px"><a class="btn btn-primary" href="learn.html">See all 19 lessons →</a></div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+<script src="js/common.js"></script>
+<script>
+  const cv = document.getElementById("hero-canvas"), g = cv.getContext("2d");
+  const nm = () => (document.getElementById("hero-name").textContent = '"' + CFM.getRobot().name + '"');
+  nm(); window.addEventListener("cfm-robot-changed", nm);
+  document.getElementById("hero-robot").onclick = CFM.openRobotBuilder;
+  (function frame(t) {
+    g.clearRect(0, 0, 360, 360); g.fillStyle = "#e7eef3"; g.beginPath(); g.arc(180, 190, 150, 0, 7); g.fill();
+    CFM.drawRobot(g, 180, 190 + Math.sin(t / 380) * 8, 260, Math.floor(t / 1600) % 4);
+    requestAnimationFrame(frame);
+  })(0);
+</script>
+</body>
+</html>

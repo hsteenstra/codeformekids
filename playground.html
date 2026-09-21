@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Playground — CodeForMe Kids</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/kids.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%237497af%22/><text x=%2250%22 y=%2266%22 font-size=%2252%22 font-family=%22monospace%22 fill=%22white%22 text-anchor=%22middle%22>&lt;/&gt;</text></svg>" />
+</head>
+<body data-page="playground">
+<header id="site-header"></header>
+<div class="workbench">
+  <div class="col">
+    <div class="panel">
+      <div class="panel-header"><div class="tool-tabs"><button id="tab-robot" class="sel">🤖 Robot</button><button id="tab-game">🎮 Game</button></div>
+        <div class="actions"><label class="speed" id="speed-wrap">Speed <input type="range" id="speed" min="0.5" max="4" step="0.5" value="1.5"></label><span class="status" id="status">Loading Python…</span></div></div>
+      <div class="stage-wrap"><canvas id="stage-canvas" width="560" height="420"></canvas></div>
+    </div>
+    <div class="panel" id="robot-tools"><div class="panel-header"><span>Map maker</span>
+      <div class="actions"><select class="pick" id="preset"><option value="room">Empty room</option><option value="gems">Gem hunt</option><option value="snake">Snake path</option><option value="stairs">Staircase</option></select><button class="btn btn-ghost btn-sm" id="edit-btn">✏️ Edit map</button></div></div>
+      <div class="panel-body" id="edit-help" style="display:none"><div class="palette-tiles" id="tiles"></div><p style="margin:8px 0 0;font-size:.9rem;color:var(--text-muted)">Pick a tile, then click the map to paint it. Design a maze, then write code to solve it!</p></div></div>
+    <div class="panel" id="game-tools" style="display:none"><div class="panel-header"><span>Game ideas</span><select class="pick" id="examples"></select></div>
+      <div class="panel-body" style="font-size:.95rem;color:var(--text-muted)">Pick an example, run it, then <b>change the numbers and colors</b> to remix it. Click the game screen to play with the arrow keys.</div></div>
+  </div>
+  <div class="col">
+    <div class="panel">
+      <div class="panel-header"><div class="actions"><span style="font-family:var(--font-display)">Your code</span><select class="pick" id="code-mode"><option value="blocks">Blocks</option><option value="python">Python</option></select></div>
+        <div class="actions"><button class="btn btn-ghost btn-sm" id="stop-btn" style="display:none">■ Stop</button><button class="btn btn-run" id="run-btn" disabled>▶ Run</button></div></div>
+      <div id="workspace"></div>
+    </div>
+    <div class="panel"><div class="panel-header"><span>Output</span></div><div class="console" id="console"><span class="muted">Run your program to see messages here.</span></div></div>
+  </div>
+</div>
+<div id="site-footer"></div>
+<script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+<script src="js/common.js"></script><script src="js/pyrunner.js"></script><script src="js/robotworld.js"></script><script src="js/blocks.js"></script>
+<script src="js/playground.js"></script>
+</body>
+</html>
