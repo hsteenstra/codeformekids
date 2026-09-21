@@ -62,7 +62,7 @@
         <button class="chip-btn" id="my-robot-btn" title="Customize your robot"><canvas class="robot-chip" width="68" height="68"></canvas><span id="robot-name-chip"></span></button></nav></div>`;
   }
   const footer = document.getElementById("site-footer");
-  if (footer) footer.innerHTML = `<div class="container site-footer">Made with 💙 by <a href="https://codeforme.org" target="_blank" rel="noopener">CodeForMe</a> · Learn to code. Real code. For every kid.</div>`;
+  if (footer) footer.innerHTML = `<div class="container site-footer"> © <a href="https://codeforme.org" target="_blank" rel="noopener">CodeForMe • 2026</a></div>`;
 
   /* ---------- Robot builder modal ---------- */
   const modal = document.createElement("div");
